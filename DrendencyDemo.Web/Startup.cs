@@ -27,7 +27,7 @@ namespace DrendencyDemo.Web
 
 
             services.AddControllersWithViews(); // Ez van az mvc helyett!
-            services.AddRazorPages();   // TODO ez mihez kell?
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -67,7 +67,6 @@ namespace DrendencyDemo.Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
             });
 
             app.UseSpa(spa =>

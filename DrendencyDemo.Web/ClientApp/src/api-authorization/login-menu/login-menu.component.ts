@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorizeService } from '../authorize.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 @Component({
@@ -15,7 +15,7 @@ export class LoginMenuComponent implements OnInit {
   constructor(private authorizeService: AuthorizeService) { }
 
   ngOnInit() {
-    this.isAuthenticated = this.authorizeService.isAuthenticated();
-    this.userName = this.authorizeService.getUser().pipe(map(u => u && u.name));
+    this.isAuthenticated = of(true);// this.authorizeService.isAuthenticated();
+    this.userName = of('Gaba'); //this.authorizeService.getUser().pipe(map(u => u && u.name));
   }
 }
