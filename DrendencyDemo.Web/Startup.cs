@@ -1,16 +1,12 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using DrendencyDemo.Web.Data;
-using DrendencyDemo.Web.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Hosting;
 
 namespace DrendencyDemo.Web
 {
@@ -23,23 +19,15 @@ namespace DrendencyDemo.Web
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<TrendencyDemoDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddIdentityServer()
-                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
-
-            services.AddAuthentication()
-                .AddIdentityServerJwt();
-            services.AddControllersWithViews();
-            services.AddRazorPages();
+            services.AddControllersWithViews(); // Ez van az mvc helyett!
+            services.AddRazorPages();   // TODO ez mihez kell?
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -47,7 +35,6 @@ namespace DrendencyDemo.Web
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -71,9 +58,10 @@ namespace DrendencyDemo.Web
 
             app.UseRouting();
 
-            app.UseAuthentication();
-            app.UseIdentityServer();
-            app.UseAuthorization();
+            // TODO: kesobb visszakapcsolni.
+            //app.UseAuthentication();
+            //app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

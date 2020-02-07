@@ -29,11 +29,11 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+      { path: 'fetch-data', component: FetchDataComponent /*, canActivate: [AuthorizeGuard]*/ },
     ])
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

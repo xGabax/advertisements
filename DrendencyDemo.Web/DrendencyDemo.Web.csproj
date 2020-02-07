@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="3.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.0" />
@@ -32,6 +31,14 @@
 
   <ItemGroup>
     <None Remove=".gitignore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TrendencyDemo.Dal\TrendencyDemo.Dal.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

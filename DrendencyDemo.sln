@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrendencyDemo.Web", "DrendencyDemo.Web\DrendencyDemo.Web.csproj", "{2E94A0F5-8D3D-4239-8ACB-10AD6A87AEA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrendencyDemo.Web", "DrendencyDemo.Web\DrendencyDemo.Web.csproj", "{2E94A0F5-8D3D-4239-8ACB-10AD6A87AEA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendencyDemo.Bll", "TrendencyDemo.Bll\TrendencyDemo.Bll.csproj", "{7CD9DB80-78A7-4B40-A03E-C5E6F712F0DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendencyDemo.Dal", "TrendencyDemo.Dal\TrendencyDemo.Dal.csproj", "{1297D0BD-C0EF-4F2E-9E8A-A11A4DF6CD40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{2E94A0F5-8D3D-4239-8ACB-10AD6A87AEA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E94A0F5-8D3D-4239-8ACB-10AD6A87AEA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E94A0F5-8D3D-4239-8ACB-10AD6A87AEA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CD9DB80-78A7-4B40-A03E-C5E6F712F0DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CD9DB80-78A7-4B40-A03E-C5E6F712F0DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CD9DB80-78A7-4B40-A03E-C5E6F712F0DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CD9DB80-78A7-4B40-A03E-C5E6F712F0DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1297D0BD-C0EF-4F2E-9E8A-A11A4DF6CD40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1297D0BD-C0EF-4F2E-9E8A-A11A4DF6CD40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1297D0BD-C0EF-4F2E-9E8A-A11A4DF6CD40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1297D0BD-C0EF-4F2E-9E8A-A11A4DF6CD40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
