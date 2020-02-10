@@ -38,10 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\TrendencyDemo.Common\TrendencyDemo.Common.csproj" />
     <ProjectReference Include="..\TrendencyDemo.Dal\TrendencyDemo.Dal.csproj" />
   </ItemGroup>
 
