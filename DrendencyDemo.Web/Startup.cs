@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using DrendencyDemo.Web.Infrastructure.Swagger;
 
 namespace DrendencyDemo.Web
 {
@@ -33,9 +34,12 @@ namespace DrendencyDemo.Web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.ConfigureSwaggerServices();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
+            IApiVersionDescriptionProvider provider)
         {
             if (env.IsDevelopment())
             {
@@ -68,6 +72,8 @@ namespace DrendencyDemo.Web
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
+
+            app.ConfigureSwagger(provider);
 
             app.UseSpa(spa =>
             {
