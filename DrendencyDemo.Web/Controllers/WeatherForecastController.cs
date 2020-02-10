@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DrendencyDemo.Web.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/v{api-version:apiVersion}/[controller]")]
     [ApiVersion("1.0")]

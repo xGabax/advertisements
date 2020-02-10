@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using DrendencyDemo.Web.Infrastructure.Swagger;
 using DrendencyDemo.Web.Infrastructure.Middlewares;
+using TrendencyDemo.Dal.Entities;
+using DrendencyDemo.Web.Infrastructure.Authentication;
 
 namespace DrendencyDemo.Web
 {
@@ -27,10 +29,13 @@ namespace DrendencyDemo.Web
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddControllers();
 
-            services.AddControllersWithViews(); // Ez van az mvc helyett!
+            services.AddIdentity<User, Role>()
+                .AddEntityFrameworkStores<TrendencyDemoDbContext>();
 
-            // In production, the Angular files will be served from this directory
+            services.ConfigureAuthenticationServices();
+
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
@@ -54,9 +59,8 @@ namespace DrendencyDemo.Web
 
             app.UseRouting();
 
-            // TODO: kesobb visszakapcsolni.
-            //app.UseAuthentication();
-            //app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
