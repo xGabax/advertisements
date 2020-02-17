@@ -34,7 +34,8 @@ namespace DrendencyDemo.Web.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
         {
-            var result = await _signInManager.PasswordSignInAsync(loginDto.UserName, loginDto.Password, loginDto.IsPersistent, false);
+            var result = await _signInManager.PasswordSignInAsync(loginDto.UserName, loginDto.Password,
+                loginDto.IsPersistent, false);
             if (result.Succeeded)
                 return Ok();
             return BadRequest();

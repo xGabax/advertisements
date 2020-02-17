@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrendencyDemo.Web", "DrendencyDemo.Web\DrendencyDemo.Web.csproj", "{2E94A0F5-8D3D-4239-8ACB-10AD6A87AEA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendencyDemo.Web", "DrendencyDemo.Web\TrendencyDemo.Web.csproj", "{2E94A0F5-8D3D-4239-8ACB-10AD6A87AEA5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendencyDemo.Dal", "TrendencyDemo.Dal\TrendencyDemo.Dal.csproj", "{1297D0BD-C0EF-4F2E-9E8A-A11A4DF6CD40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendencyDemo.Common", "TrendencyDemo.Common\TrendencyDemo.Common.csproj", "{AF1C561F-696E-4825-A7AB-F1B0DB95EFFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrendencyDemo.Common", "TrendencyDemo.Common\TrendencyDemo.Common.csproj", "{AF1C561F-696E-4825-A7AB-F1B0DB95EFFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
