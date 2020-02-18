@@ -11,6 +11,12 @@ using DrendencyDemo.Web.Infrastructure.Swagger;
 using DrendencyDemo.Web.Infrastructure.Middlewares;
 using TrendencyDemo.Dal.Entities;
 using DrendencyDemo.Web.Infrastructure.Authentication;
+using Hangfire;
+using TrendencyDemo.Web.Infrastructure.Jobs;
+using TrendencyDemo.CommonModule.Interfaces;
+using TrendencyDemo.CommonModule.Services;
+using TrendencyDemo.Common.Configs;
+using TrendencyDemo.CommonModule.Aggregates;
 
 namespace DrendencyDemo.Web
 {
@@ -25,6 +31,9 @@ namespace DrendencyDemo.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<EmailConfigs>(Configuration.GetSection("EmailConfigs"));
+            services.Configure<EmailCredentials>(Configuration.GetSection("EmailCredentials"));
+
             services.AddDbContext<TrendencyDemoDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -42,10 +51,18 @@ namespace DrendencyDemo.Web
             });
 
             services.ConfigureSwaggerServices();
+
+            services.AddHangfire(config =>
+                config.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
+            
+            services.AddTransient<EmailSenderJob>();
+            services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<ServiceBaseAggregate>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
-            IApiVersionDescriptionProvider provider)
+            IApiVersionDescriptionProvider provider, EmailSenderJob emailSenderJob)
         {
             app.AddExceptionHandler();
             app.UseHsts();
@@ -70,6 +87,10 @@ namespace DrendencyDemo.Web
             });
 
             app.ConfigureSwagger(provider);
+            
+            app.UseHangfireDashboard();
+            app.UseHangfireServer();
+            RecurringJob.AddOrUpdate(() => emailSenderJob.SendEmails(), Cron.Minutely);
 
             app.UseSpa(spa =>
             {
