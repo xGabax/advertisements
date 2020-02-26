@@ -6,6 +6,7 @@ using System.Linq;
 using TrendencyDemo.Common.Configs;
 using TrendencyDemo.CommonModule.Aggregates;
 using TrendencyDemo.CommonModule.Interfaces;
+using TrendencyDemo.Dal.Entities;
 using TrendencyDemo.Dal.Enums;
 
 namespace TrendencyDemo.CommonModule.Services
@@ -22,6 +23,22 @@ namespace TrendencyDemo.CommonModule.Services
         {
             _emailConfigs = emailConfigs.Value;
             _emailCredentials = emailCredentials.Value;
+        }
+
+        public void AddEmail(string address, string subject, string body)
+        {
+            var email = new Email
+            {
+                Body = body,
+                CreatedDate = _dateInfoService.UtcNow,
+                EmailState = EmailState.Pending,
+                Subject = subject,
+                To = address,
+                TryCount = 0,
+                LastError = null,
+                LastTriedDate = null
+            };
+            _context.Emails.Add(email);
         }
 
         public void SendEmails()

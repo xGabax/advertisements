@@ -17,6 +17,7 @@ using TrendencyDemo.CommonModule.Interfaces;
 using TrendencyDemo.CommonModule.Services;
 using TrendencyDemo.Common.Configs;
 using TrendencyDemo.CommonModule.Aggregates;
+using TrendencyDemo.Web.Infrastructure.Services;
 
 namespace DrendencyDemo.Web
 {
@@ -58,7 +59,9 @@ namespace DrendencyDemo.Web
             services.AddTransient<EmailSenderJob>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<ServiceBaseAggregate>();
-
+            services.AddTransient<ICurrentUserService, CurrentUserService>();
+            services.AddTransient<IDateInfoService, DateInfoService>();
+            services.AddHttpContextAccessor();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
